@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "armor-effects",
+	"version": "${version}",
+	"name": "Armor Effects",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/armor-effects/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.reed.armoreffects.ArmorEffects"
+		],
+		"client": [
+			"com.reed.armoreffects.ArmorEffectsClient"
+		],
+		"fabric-datagen": [
+			"com.reed.armoreffects.ArmorEffectsDataGenerator"
+		]
+	},
+	"mixins": [
+		"armor-effects.mixins.json",
+		{
+			"config": "armor-effects.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.3",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

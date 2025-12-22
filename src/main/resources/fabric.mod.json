@@ -3,13 +3,13 @@
 	"id": "armor-effects",
 	"version": "${version}",
 	"name": "Armor Effects",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod introduces a new mechanic to the game that adds status effects to armor based off of the material.",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/mouse0017782/",
+		"sources": "https://github.com/mouse0017782/armor-fx-fabric"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/armor-effects/icon.png",

@@ -190,7 +190,7 @@ public class ArmorFX {
         }
         if (material.equals("DIAMOND")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.NIGHT_VISION, 20, 1, false, false
+                    StatusEffects.NIGHT_VISION, 22, 1, false, false
             ));
         }
         if (material.equals("NETHERITE")) {
@@ -202,33 +202,33 @@ public class ArmorFX {
     public static void applyFullSetEffect(ServerPlayerEntity player, String material) {
         if(material.equals("LEATHER")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.LUCK, 20, 5, false, false
+                    StatusEffects.LUCK, 20, 4, false, false
             ));
         }
         if (material.equals("IRON")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.STRENGTH, 20, 2, false, false
+                    StatusEffects.STRENGTH, 20, 1, false, false
             ));
         }
         if (material.equals("COPPER")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.SPEED, 20, 3, false, false
+                    StatusEffects.SPEED, 20, 2, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.JUMP_BOOST, 20, 2, false, false
+                    StatusEffects.JUMP_BOOST, 20, 1, false, false
             ));
         }
         if (material.equals("GOLDEN")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.FIRE_RESISTANCE, 20, 3, false, false
+                    StatusEffects.FIRE_RESISTANCE, 20, 2, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.SLOW_FALLING, 20, 2, false, false
+                    StatusEffects.SLOW_FALLING, 20, 1, false, false
             ));
         }
         if (material.equals("DIAMOND")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.NIGHT_VISION, 20, 2, false, false
+                    StatusEffects.NIGHT_VISION, 22, 1, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.HASTE, 20, 2, false, false
@@ -236,10 +236,10 @@ public class ArmorFX {
         }
         if (material.equals("NETHERITE")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.ABSORPTION, 20, 2, false, false
+                    StatusEffects.ABSORPTION, 20, 1, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.SATURATION, 20, 2, false, false
+                    StatusEffects.CONDUIT_POWER, 20, 1, false, false
             ));
         }
     }

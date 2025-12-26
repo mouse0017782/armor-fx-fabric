@@ -1,0 +1,80 @@
+name: Release Mod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Make Gradle executable
+        run: chmod +x gradlew
+
+      - name: Build mod
+        run: ./gradlew build
+
+      # ------------------------
+      # Read Gradle version
+      # ------------------------
+      - name: Get version
+        id: version
+        run: |
+          echo "VERSION=$(./gradlew -q properties | grep 'version:' | awk '{print $2}')" >> $GITHUB_OUTPUT
+
+      # ------------------------
+      # Generate changelog from commits
+      # ------------------------
+      - name: Generate changelog
+        id: changelog
+        run: |
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          git log $(git describe --tags --abbrev=0 2>/dev/null || echo "")..HEAD \
+            --pretty=format:"- %s" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # ------------------------
+      # GitHub Release
+      # ------------------------
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: Armor Effects v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## Changes
+            ${{ steps.changelog.outputs.CHANGELOG }}
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ------------------------
+      # Modrinth Upload
+      # ------------------------
+      - name: Upload to Modrinth
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: bGmVar41
+          files: build/libs/*.jar
+          name: Armor Effects ${{ steps.version.outputs.VERSION }}
+          version: ${{ steps.version.outputs.VERSION }}
+          changelog: |
+            ${{ steps.changelog.outputs.CHANGELOG }}
+          loaders: fabric
+          game-versions: |
+            1.21.11

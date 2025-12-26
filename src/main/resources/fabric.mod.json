@@ -5,7 +5,7 @@
 	"name": "Armor Effects",
 	"description": "This mod introduces a new mechanic to the game that adds status effects to armor based off of the material.",
 	"authors": [
-		"Me!"
+		"ThatGuyIsReed"
 	],
 	"contact": {
 		"homepage": "https://github.com/mouse0017782/",
@@ -32,6 +32,13 @@
 			"environment": "client"
 		}
 	],
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/6E2gYmQK4D"
+			}
+		}
+	},
 	"depends": {
 		"fabricloader": ">=0.18.3",
 		"minecraft": "~1.21.11",

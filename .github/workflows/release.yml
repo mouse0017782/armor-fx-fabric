@@ -1,4 +1,4 @@
-name: Release Mod
+name: Modrinth Release
 
 on:
   workflow_dispatch:  # manual trigger only
@@ -52,14 +52,18 @@ jobs:
         run: ./gradlew build
 
       # ------------------------
-      # Get version from Gradle
+      # Get version from Gradle and strip leading 'v'
       # ------------------------
       - name: Get version
         id: version
         run: |
           VERSION=$(./gradlew -q properties | grep 'version:' | awk '{print $2}')
+          VERSION_MODRINTH=${VERSION#v}  # remove leading 'v' for Modrinth
           echo "VERSION<<EOF" >> $GITHUB_OUTPUT
           echo "$VERSION" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "VERSION_MODRINTH<<EOF" >> $GITHUB_OUTPUT
+          echo "$VERSION_MODRINTH" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       # ------------------------
@@ -74,10 +78,9 @@ jobs:
           echo "" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-     
-
       # ------------------------
       # Upload to Modrinth
+      # ------------------------
       - name: Upload to Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -85,7 +88,7 @@ jobs:
           modrinth-id: bGmVar41
           files: build/libs/*.jar
           name: Armor Effects ${{ steps.version.outputs.VERSION }}
-          version: ${{ steps.version.outputs.VERSION }}
+          version: ${{ steps.version.outputs.VERSION_MODRINTH }}
           changelog: |
             ${{ steps.changelog.outputs.CHANGELOG }}
           loaders: fabric

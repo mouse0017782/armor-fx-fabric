@@ -33,7 +33,11 @@ jobs:
       - name: Get version
         id: version
         run: |
-          echo "VERSION=$(./gradlew -q properties | grep 'version:' | awk '{print $2}')" >> $GITHUB_OUTPUT
+          VERSION=$(./gradlew -q properties | grep 'version:' | awk '{print $2}')
+          echo "VERSION<<EOF" >> $GITHUB_OUTPUT
+          echo "$VERSION" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
 
       # ------------------------
       # Generate changelog from commits

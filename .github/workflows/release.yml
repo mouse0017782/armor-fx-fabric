@@ -74,32 +74,7 @@ jobs:
           echo "" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      # ------------------------
-      # Delete existing tag if it exists (overwrite)
-      # ------------------------
-      - name: Delete existing tag if exists
-        run: |
-          git fetch --tags
-          if git rev-parse "refs/tags/v${{ steps.version.outputs.VERSION }}" >/dev/null 2>&1; then
-            echo "Tag exists, deleting..."
-            git tag -d v${{ steps.version.outputs.VERSION }}
-            git push --delete origin v${{ steps.version.outputs.VERSION }}
-          fi
-
-      # ------------------------
-      # Create GitHub Release
-      # ------------------------
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.version.outputs.VERSION }}
-          name: Armor Effects v${{ steps.version.outputs.VERSION }}
-          body: |
-            ## Changes
-            ${{ steps.changelog.outputs.CHANGELOG }}
-          files: build/libs/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+     
 
       # ------------------------
       # Upload to Modrinth

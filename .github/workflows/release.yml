@@ -8,6 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Check Java version
+        run: java -version
       # ------------------------
       # Checkout repository
       # ------------------------

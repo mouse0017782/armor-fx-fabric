@@ -5,18 +5,19 @@ _Note: Effects do not stack so a player wearing two copper chestplates would not
 Fabric API - https://modrinth.com/mod/fabric-api
 # Effects
 ## Per-peice Effect
-Leather - Luck 1
-Copper - Speed 1
-Iron - Stregnth 1
-Gold - Fire Resistance 1
-Diamond - Night Vision
-Netherite - Absorbtion 1
+- Leather - Luck 1
+- Copper - Speed 1
+- Iron - Stregnth 1
+- Gold - Fire Resistance 1
+- Diamond - Night Vision
+- Netherite - Absorbtion 1
+
 ## Full-set Effect
-Leather - Luck 5
-Copper - Speed 3 & Jump Boost 2
-Iron - Stregnth 2
-Gold - Fire Resistance 3 & Slow Falling 2
-Diamond - Night Vision & Haste 2
-Netherite - Absorbtion 2 & Saturation 2 (Overpowered)
+- Leather - Luck 5
+- Copper - Speed 3 & Jump Boost 2
+- Iron - Stregnth 2 & Resistance 1
+- Gold - Fire Resistance 3 & Slow Falling 2 & Regeneration 1
+- Diamond - Night Vision & Haste 2
+- Netherite - Health Boost 2 & Conduit Power & Fire Resistance
 
 This mod was created by a 13 year old <3

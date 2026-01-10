@@ -195,7 +195,7 @@ public class ArmorFX {
         }
         if (material.equals("NETHERITE")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.ABSORPTION, 20, 1, false, false
+                    StatusEffects.HEALTH_BOOST, 20, 1, false, false
             ));
         }
     }
@@ -209,6 +209,9 @@ public class ArmorFX {
             player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.STRENGTH, 20, 1, false, false
             ));
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.RESISTANCE, 20, 1, false, false
+            ))
         }
         if (material.equals("COPPER")) {
             player.addStatusEffect(new StatusEffectInstance(
@@ -223,7 +226,10 @@ public class ArmorFX {
                     StatusEffects.FIRE_RESISTANCE, 20, 2, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.SLOW_FALLING, 20, 1, false, false
+                    StatusEffects.SLOW_FALLING, 20, 2, false, false
+            ));
+            player.addStatusEffect(new  StatusEffectInstance(
+                    StatusEffects.REGENERATION, 20, 1, false, false
             ));
         }
         if (material.equals("DIAMOND")) {
@@ -236,10 +242,13 @@ public class ArmorFX {
         }
         if (material.equals("NETHERITE")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.ABSORPTION, 20, 1, false, false
+                    StatusEffects.HEALTH_BOOST, 20, 1, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.CONDUIT_POWER, 20, 1, false, false
+            ));
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.FIRE_RESISTANCE, 20, 1, false, false
             ));
         }
     }

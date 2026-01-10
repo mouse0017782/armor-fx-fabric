@@ -211,7 +211,7 @@ public class ArmorFX {
             ));
             player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.RESISTANCE, 20, 1, false, false
-            ))
+            ));
         }
         if (material.equals("COPPER")) {
             player.addStatusEffect(new StatusEffectInstance(

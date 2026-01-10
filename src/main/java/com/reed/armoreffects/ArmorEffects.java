@@ -22,6 +22,7 @@ public class ArmorEffects implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Armor effects mod initialized!");
+		JoinMessage.init();
 
 		ServerTickEvents.END_SERVER_TICK.register((MinecraftServer server) -> {
 			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {

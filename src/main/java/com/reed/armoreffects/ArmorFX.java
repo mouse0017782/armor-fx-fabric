@@ -234,7 +234,7 @@ public class ArmorFX {
         }
         if (material.equals("DIAMOND")) {
             player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.NIGHT_VISION, 22, 1, false, false
+                    StatusEffects.NIGHT_VISION, 20 * 15, 1, false, false
             ));
             player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.HASTE, 20, 2, false, false

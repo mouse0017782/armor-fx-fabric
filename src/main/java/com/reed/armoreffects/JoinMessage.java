@@ -1,11 +1,11 @@
 package com.reed.armoreffects;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.text.ClickEvent;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.server.level.ServerPlayer;
 import java.net.URI;
 
 public class JoinMessage {
@@ -14,14 +14,14 @@ public class JoinMessage {
 
     public static void init() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            ServerPlayerEntity player = handler.player;
+            ServerPlayer player = handler.player;
 
             server.execute(() -> {
-                Text msg = Text.literal("Armor Effects Active.\n")
-                        .formatted(Formatting.AQUA, Formatting.BOLD)
+                Component msg = Component.literal("Armor Effects Active.\n")
+                        .withStyle(ChatFormatting.AQUA, ChatFormatting.BOLD)
                         .append(
-                                Text.literal("Click here to view the mod on Modrinth for documentation")
-                                        .formatted(Formatting.YELLOW, Formatting.UNDERLINE)
+                                Component.literal("Click here to view the mod on Modrinth for documentation")
+                                        .withStyle(ChatFormatting.YELLOW, ChatFormatting.UNDERLINE)
                                         .setStyle(
                                                 Style.EMPTY.withClickEvent(
                                                         new ClickEvent.OpenUrl(URI.create(MODRINTH_URL))
@@ -29,7 +29,7 @@ public class JoinMessage {
                                         )
                         );
 
-                player.sendMessage(msg, false);
+                player.displayClientMessage(msg, false);
             });
         });
     }

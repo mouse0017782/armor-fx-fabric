@@ -25,13 +25,6 @@
 			"com.reed.armoreffects.ArmorEffectsDataGenerator"
 		]
 	},
-	"mixins": [
-		"armor-effects.mixins.json",
-		{
-			"config": "armor-effects.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"custom": {
 		"modmenu": {
 			"links": {
@@ -40,7 +33,7 @@
 		}
 	},
 	"depends": {
-		"fabricloader": ">=0.18.3",
+		"fabricloader": ">=0.18.4",
 		"minecraft": "~1.21.11",
 		"java": ">=21",
 		"fabric-api": "*"

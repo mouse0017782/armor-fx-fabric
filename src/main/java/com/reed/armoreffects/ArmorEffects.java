@@ -3,7 +3,7 @@ package com.reed.armoreffects;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +25,7 @@ public class ArmorEffects implements ModInitializer {
 		JoinMessage.init();
 
 		ServerTickEvents.END_SERVER_TICK.register((MinecraftServer server) -> {
-			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 				ArmorFX.applyArmorEffects(player);
 			}
 		});

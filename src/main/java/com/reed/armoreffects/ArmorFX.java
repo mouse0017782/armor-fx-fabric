@@ -190,7 +190,7 @@ public class ArmorFX {
         }
         if (material.equals("DIAMOND")) {
             player.addEffect(new MobEffectInstance(
-                    MobEffects.NIGHT_VISION, 22, 1, false, false
+                    MobEffects.NIGHT_VISION, 20 * 15, 1, false, false
             ));
         }
         if (material.equals("NETHERITE")) {
